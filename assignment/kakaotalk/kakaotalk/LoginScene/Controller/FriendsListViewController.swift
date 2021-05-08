@@ -17,11 +17,12 @@ class FriendsListViewController: UIViewController {
         super.viewDidLoad()
 
         setFriendData()
-        friendtableViewinit()
+        friendTableViewinit()
         Nibregister()
     }
     
-    func friendtableViewinit() {
+    
+    func friendTableViewinit() {
         friendTableView.delegate = self
         friendTableView.dataSource = self
     }
