@@ -119,9 +119,41 @@ extension FriendsListViewController: UITableViewDelegate {
         }
     }
     
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        switch indexPath.section {
+        
+        case 0:
+            return nil
+            
+        default:
+            let hide = hideAction(at: indexPath)
+            let block = blockAction(at: indexPath)
+            return UISwipeActionsConfiguration(actions: [block, hide])
+            
+        }
+        
+    }
+    
+    func hideAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "숨김")
+        { (action, view, completion) in
+            self.friendList.remove(at: indexPath.row)
+            completion(true)
+        }
+        action.backgroundColor = .systemGray
+        return action
+    }
+    
+    func blockAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "차단")
+        { (action, view, completion) in
+            self.friendList.remove(at: indexPath.row)
+            completion(true)
+        }
+        action.backgroundColor = .systemRed
+        return action
+    }
 }
 
 extension FriendsListViewController : UITableViewDataSource {
