@@ -21,6 +21,24 @@ class FriendsListViewController: UIViewController {
         Nibregister()
     }
     
+    @IBAction func settingBtnClicked(_ sender: Any) {
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let edit = UIAlertAction(title: "편집", style: .default)
+        let friend = UIAlertAction(title: "친구관리", style: .default)
+        let setting = UIAlertAction(title: "전체설정", style: .default)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(edit)
+        alert.addAction(friend)
+        alert.addAction(setting)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true)
+    }
+    
+    
     
     func friendTableViewinit() {
         friendTableView.delegate = self
@@ -100,6 +118,10 @@ extension FriendsListViewController: UITableViewDelegate {
             return 50
         }
     }
+    
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        <#code#>
+//    }
 }
 
 extension FriendsListViewController : UITableViewDataSource {
