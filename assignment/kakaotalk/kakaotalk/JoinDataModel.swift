@@ -7,4 +7,9 @@
 
 import Foundation
 
+// MARK: - JoinDataModel
+struct JoinDataModel: Codable {
+    let success: Bool
+    let message: String
+}
 
